@@ -1,0 +1,142 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- アプリ名 -->
+    <AssemblyName>NetPy</AssemblyName>
+    
+    <!-- アプリの説明 -->
+    <Description>This app is an example of a small WinUI and Python app.</Description>
+
+    <!-- 作者 -->
+    <Authors>MURATA Mitsuharu</Authors>
+
+    <!-- 法人・個人名 -->
+    <Company>MURATA Mitsuharu</Company>
+
+    <!-- 著作権情報 -->
+    <Copyright>(c) $([System.DateTime]::Now.Year) $(Company)</Copyright>
+
+    <!-- 発行先 -->
+    <PublishDir>publish</PublishDir>
+    
+    <!-- アイコン -->
+    <ApplicationIcon>Assets/App.ico</ApplicationIcon>
+
+    <!-- リポジトリの場所 -->
+    <RepositoryUrl>https://github.com/himeyama/NetPy</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+
+    <!-- LICENSE & README.md の場所 -->
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <Platform>x64</Platform>
+    <Platforms>x64</Platforms>
+    <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <Configurations>Release;Debug</Configurations>
+    <DefaultLanguage>ja-JP</DefaultLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Assets\App.scale-100.png" />
+    <Content Remove="Assets\App.scale-125.png" />
+    <Content Remove="Assets\App.scale-150.png" />
+    <Content Remove="Assets\App.scale-200.png" />
+    <Content Remove="Assets\App.scale-400.png" />
+    <Content Remove="Assets\AppIcon.altform-lightunplated_targetsize-16.png" />
+    <Content Remove="Assets\AppIcon.altform-lightunplated_targetsize-24.png" />
+    <Content Remove="Assets\AppIcon.altform-lightunplated_targetsize-256.png" />
+    <Content Remove="Assets\AppIcon.altform-lightunplated_targetsize-32.png" />
+    <Content Remove="Assets\AppIcon.altform-lightunplated_targetsize-48.png" />
+    <Content Remove="Assets\AppIcon.altform-unplated_targetsize-16.png" />
+    <Content Remove="Assets\AppIcon.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\AppIcon.altform-unplated_targetsize-256.png" />
+    <Content Remove="Assets\AppIcon.altform-unplated_targetsize-32.png" />
+    <Content Remove="Assets\AppIcon.altform-unplated_targetsize-48.png" />
+    <Content Remove="Assets\AppIcon.scale-100.png" />
+    <Content Remove="Assets\AppIcon.scale-125.png" />
+    <Content Remove="Assets\AppIcon.scale-150.png" />
+    <Content Remove="Assets\AppIcon.scale-200.png" />
+    <Content Remove="Assets\AppIcon.scale-400.png" />
+    <Content Remove="Assets\AppIcon.targetsize-16.png" />
+    <Content Remove="Assets\AppIcon.targetsize-24.png" />
+    <Content Remove="Assets\AppIcon.targetsize-256.png" />
+    <Content Remove="Assets\AppIcon.targetsize-32.png" />
+    <Content Remove="Assets\AppIcon.targetsize-48.png" />
+    <Content Remove="Assets\LargeTile.scale-100.png" />
+    <Content Remove="Assets\LargeTile.scale-125.png" />
+    <Content Remove="Assets\LargeTile.scale-150.png" />
+    <Content Remove="Assets\LargeTile.scale-200.png" />
+    <Content Remove="Assets\LargeTile.scale-400.png" />
+    <Content Remove="Assets\MediumTile.scale-100.png" />
+    <Content Remove="Assets\MediumTile.scale-125.png" />
+    <Content Remove="Assets\MediumTile.scale-150.png" />
+    <Content Remove="Assets\MediumTile.scale-200.png" />
+    <Content Remove="Assets\MediumTile.scale-400.png" />
+    <Content Remove="Assets\SmallTile.scale-100.png" />
+    <Content Remove="Assets\SmallTile.scale-125.png" />
+    <Content Remove="Assets\SmallTile.scale-150.png" />
+    <Content Remove="Assets\SmallTile.scale-200.png" />
+    <Content Remove="Assets\SmallTile.scale-400.png" />
+    <Content Remove="Assets\SplashScreen.scale-100.png" />
+    <Content Remove="Assets\SplashScreen.scale-125.png" />
+    <Content Remove="Assets\SplashScreen.scale-150.png" />
+    <Content Remove="Assets\SplashScreen.scale-200.png" />
+    <Content Remove="Assets\SplashScreen.scale-400.png" />
+    <Content Remove="Assets\WideTile.scale-100.png" />
+    <Content Remove="Assets\WideTile.scale-125.png" />
+    <Content Remove="Assets\WideTile.scale-150.png" />
+    <Content Remove="Assets\WideTile.scale-200.png" />
+    <Content Remove="Assets\WideTile.scale-400.png" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="pythonnet" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="assets\pysource\src\testlib\__init__.py" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Strings\ja-JP\Resource1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings\ja-JP\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

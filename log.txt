@@ -1,0 +1,315 @@
+Runtime.PythonDLL was not set or does not point to a supported Python runtime DLL. See https://github.com/pythonnet/pythonnet#embedding-python-in-net
+Runtime.PythonDLL was not set or does not point to a supported Python runtime DLL. See https://github.com/pythonnet/pythonnet#embedding-python-in-net
+BinaryFormatter serialization and deserialization are disabled within this application. See https://aka.ms/binaryformatter for more information.
+BinaryFormatter serialization and deserialization are disabled within this application. See https://aka.ms/binaryformatter for more information.
+インターフェイスがサポートされていません
+
+インターフェイスがサポートされていません
+
+C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\AssetsC:\Users\minan\AppData\Local\Programs\Python\Python311\Scripts\poetry.exe
+C:\Users\minan\AppData\Local\Programs\Python\Python311\Scripts\poetry.exe
+C:\Users\minan\AppData\Local\Programs\Python\Python311\Scripts\poetry.exe OK
+
+
+
+C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets
+
+C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+
+
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+
+Virtualenv
+Python:         3.11.1
+Implementation: CPython
+Path:           NA
+Executable:     NA
+
+System
+Platform:   win32
+OS:         nt
+Python:     3.11.1
+Path:       C:\Users\minan\AppData\Local\Programs\Python\Python311
+Executable: C:\Users\minan\AppData\Local\Programs\Python\Python311\python.exe
+
+初期化されていません
+
+初期化されていません
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Scripts\python.exe
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Scripts\python.exe
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Scripts\python.exe
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Scripts\python.exe
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+OK 01
+Runtime.PythonDLL was not set or does not point to a supported Python runtime DLL. See https://github.com/pythonnet/pythonnet#embedding-python-in-net
+OK 02
+OK 01
+Runtime.PythonDLL was not set or does not point to a supported Python runtime DLL. See https://github.com/pythonnet/pythonnet#embedding-python-in-net
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+
+
+OK 01
+OK 02
+;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11;C:\Users\minan\source\NetPy\NetPy\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\PySource
+OK 01
+OK 02
+C:\Users\minan\AppData\Local\Programs\Python\Python311
+OK 01
+OK 02
+
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+OK 01
+OK 02
+;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+
+C:\Users\minan\AppData\Local\Programs\Python\Python311;C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11\Lib\site-packages
+
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
+
+C:\Users\minan\AppData\Local\pypoetry\Cache\virtualenvs\pysource-R1lDmcQU-py3.11
