@@ -129,6 +129,25 @@
             <StackPanel>
                 <TextBlock x:Name="ErrorMessage" Margin="8" />
             </StackPanel>
+            <Grid ColumnDefinitions="*, *">
+                <Grid Grid.Column="0">
+                    <Grid RowDefinitions="*, Auto">
+                        <Grid Margin="8, 8, 4, 0">
+                            <Border CornerRadius="8">
+                                <WebView2 x:Name="Code" />
+                            </Border>
+                        </Grid>
+                        <Button Content="作図" Click="Preview" Grid.Row="1" HorizontalAlignment="Stretch" Margin="8, 8, 4, 0" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid Margin="4, 8, 8, 0">
+                        <Border CornerRadius="8">
+                            <WebView2 x:Name="Graph"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="2">

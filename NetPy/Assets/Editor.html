@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editor</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <style>
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        require.config({
+            paths: {
+                vs: "./node_modules/monaco-editor/min/vs"
+            }
+        });
+        let editor;
+        require(["vs/editor/editor.main"], function () {
+            editor = monaco.editor.create(
+                document.getElementById("container"),
+                {
+                    value: [
+                    ].join("\n"),
+                    language: "python",
+                }
+            );
+
+            let isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Monaco Editorのテーマを設定
+            let theme = isDarkTheme ? 'vs-dark' : 'vs-light';
+            monaco.editor.setTheme(theme);
+
+            // Windowsのテーマが変更されたときにMonaco Editorのテーマを更新
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                let newIsDarkTheme = e.matches;
+                let newTheme = newIsDarkTheme ? 'vs-dark' : 'vs-light';
+                monaco.editor.setTheme(newTheme);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -178,6 +178,9 @@ namespace NetPy
             pythonPrep.pySource = GetPythonSourcePath();
             pythonPrep.poetryLibPath = pythonPrep.GetPoetryLibPath();
 
+            if (!PythonEngine.IsInitialized)
+                PythonEngine.Initialize();
+
             return pythonPrep;
         }
 
