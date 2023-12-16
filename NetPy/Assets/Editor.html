@@ -50,6 +50,12 @@
                 monaco.editor.setTheme(newTheme);
             });
         });
+
+        window.addEventListener('resize', () => {
+            if (editor) {
+                editor.layout();
+            }
+        });
     </script>
 </body>
 

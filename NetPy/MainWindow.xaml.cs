@@ -1,12 +1,12 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace NetPy
@@ -14,8 +14,9 @@ namespace NetPy
     public sealed partial class MainWindow : Window
     {
         static string logFileName = Path.GetTempFileName();
-        string pySource = "";
-        string poetryLibPath = "";
+        public string pySource = "";
+        public string poetryLibPath = "";
+        public App app = null!;
 
         public MainWindow()
         {
@@ -24,20 +25,16 @@ namespace NetPy
             AppWindow.Closing += WindowClosing;
 
             ExtendsContentIntoTitleBar = true;
-            SetTitleBar(AppTitleBar);
+            SetTitleBar(WindowMove);
 
             PythonPrep.errorMessage = ErrorMessage;
             PythonPrep pythonPrep = PythonPrep.PythonInit();
             pySource = pythonPrep.pySource;
             poetryLibPath = pythonPrep.poetryLibPath;
 
-            string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string assetsPath = Path.Combine(currentDirectory, "Assets");
-            string editorPage = Path.Join(assetsPath, "Editor.html");
-            if (File.Exists(editorPage))
-                Code.Source = new Uri(editorPage);
-
             PyTest();
+
+            TabView_AddTabButtonClick(TabsArea, null);
         }
 
         void WindowClosing(AppWindow sender, AppWindowClosingEventArgs args)
@@ -84,15 +81,14 @@ namespace NetPy
                 sys.path.append(poetryLibPath);
                 sys.path.append(pySource);
 
-                AppTitleTextBlock.Text = "作図アプリ";
+                //AppTitleTextBlock.Text = "作図アプリ";
 
                 dynamic testlib = Py.Import("testlib");
                 Debug("Execution Python Done!");
             }
-
         }
 
-        string Base64Decode(string base64)
+        public static string Base64Decode(string base64)
         {
             string base64String = base64;
             // 4の倍数になるようにパディングを追加
@@ -105,57 +101,36 @@ namespace NetPy
             return decodedString;
         }
 
-        async Task<string> GetEditorValue()
+        void TabView_AddTabButtonClick(TabView sender, object args)
         {
-            string base64 = await Code.ExecuteScriptAsync("btoa(unescape(encodeURIComponent(editor.getValue())))");
-            base64 = base64.Substring(1, base64.Length - 2);
-            return Base64Decode(base64);
+            TabViewItem item = new()
+            {
+                IconSource = new SymbolIconSource
+                {
+                    Symbol = Symbol.Document
+                },
+                Header = "Untitled",
+                //Content = new Tabs
+                //{
+                //    mainWindow = this
+                //}
+                Content = new OpenFilePicker
+                {
+                    mainWindow = this
+                }
+            };
+            sender.TabItems.Add(item);
+            sender.SelectedItem = item;
         }
 
-        async void Preview(object sender, RoutedEventArgs e)
+        void TabView_TabClose(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
-            string code = await GetEditorValue();
-
-            string tmp = Path.GetTempFileName();
-
-            string tmpPath = Path.GetTempPath();
-            string pyGraphPath = Path.Combine(tmpPath, "pyGraph");
-            if (!Directory.Exists(pyGraphPath))
-                Directory.CreateDirectory(pyGraphPath);
-            string basename = Path.GetFileNameWithoutExtension(tmp);
-            string pythonCodePath = Path.Combine(pyGraphPath, basename + ".py");
-            string svgPath = Path.Combine(pyGraphPath, $"{basename}.svg");
-
-            File.AppendAllText(tmp, "import matplotlib.pyplot as plt\n");
-            File.AppendAllText(tmp, "import numpy as np\n");
-            File.AppendAllText(tmp, code);
-            File.AppendAllText(tmp, $"\nplt.savefig(r\"{svgPath}\")\n");
-
-            if (File.Exists(tmp))
-                File.Move(tmp, pythonCodePath);
-            else
-                return;
-
-            using (Py.GIL())
+            sender.TabItems.Remove(args.Tab);
+            if (sender.TabItems.Count == 0)
             {
-                dynamic sys = Py.Import("sys");
-
-                sys.path.append(poetryLibPath);
-                sys.path.append(pySource);
-                sys.path.append(pyGraphPath);
-
-                try
-                {
-                    dynamic graph = Py.Import(basename);
-                }
-                catch (Exception ex)
-                {
-                    Debug(ex.Message);
-                }
+                Process process = Process.GetCurrentProcess();
+                process.Kill();
             }
-
-            if (File.Exists(svgPath))
-                Graph.Source = new Uri(svgPath);
         }
     }
 }

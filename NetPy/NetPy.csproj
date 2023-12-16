@@ -113,6 +113,9 @@
 
   <ItemGroup>
     <None Remove="assets\pysource\src\testlib\__init__.py" />
+    <None Remove="Tabs\Tabs.xaml" />
+    <None Remove="UIExplorer.xaml" />
+    <None Remove="UIExplorer\OpenFilePicker.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -137,6 +140,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UIExplorer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Tabs\Tabs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UIExplorer\OpenFilePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

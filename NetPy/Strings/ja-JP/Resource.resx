@@ -120,4 +120,7 @@
   <data name="File.Title" xml:space="preserve">
     <value>ファイル</value>
   </data>
+  <data name="NewTab.Text" xml:space="preserve">
+    <value>新しいタブ</value>
+  </data>
 </root>
