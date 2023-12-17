@@ -8,15 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid ColumnDefinitions="*, *">
-        <Grid Grid.Column="0">
-            <Grid RowDefinitions="*, Auto" Margin="8, 8, 4, 8">
-                <WebView2 x:Name="Code" Grid.Row="0" />
-                <Button Content="Plot" Style="{StaticResource AccentButtonStyle}" Click="Preview" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0, 8, 0, 0" />
+    <Grid RowDefinitions="*, Auto">
+        <Grid ColumnDefinitions="*, *" Grid.Row="0">
+            <Grid Grid.Column="0">
+                <Grid RowDefinitions="*, Auto" Margin="8, 8, 4, 8">
+                    <WebView2 x:Name="Code" Grid.Row="0" />
+                    <Button Content="Plot" Style="{StaticResource AccentButtonStyle}" Click="Preview" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0, 8, 0, 0" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Margin="4, 8, 8, 8">
+                <WebView2 x:Name="Graph"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Margin="4, 8, 8, 8">
-            <WebView2 x:Name="Graph"/>
+        <Grid Grid.Row="1">
+            <Grid>
+                <Button Click="Open" Content="Open" Margin="8"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

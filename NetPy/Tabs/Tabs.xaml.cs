@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 using Python.Runtime;
 using System;
 using System.IO;
@@ -10,18 +11,31 @@ namespace NetPy
 {
     public sealed partial class Tabs : Page
     {
-        public MainWindow mainWindow { get; set; } = null!;
+        public MainWindow mainWindow;
 
         public Tabs()
         {
             InitializeComponent();
-
             string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string assetsPath = Path.Combine(currentDirectory, "Assets");
             string editorPage = Path.Join(assetsPath, "Editor.html");
             if (File.Exists(editorPage))
                 Code.Source = new Uri(editorPage);
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            mainWindow = e.Parameter as MainWindow;
+        }
+
+        async void Open(object sender, RoutedEventArgs e)
+        {
+            TabViewItem tabViewItem = mainWindow.TabsArea.SelectedItem as TabViewItem;
+            Frame frame = tabViewItem.Content as Frame;
+            string fileName = await OpenFilePicker.AsyncOpenFilenamePicker(frame, mainWindow);
+        }
+
 
         async Task<string> GetEditorValue()
         {

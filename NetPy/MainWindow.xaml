@@ -124,23 +124,16 @@
                     HorizontalAlignment="Center" />
             </Grid>
         </Grid>-->
-        
+
         <Grid Grid.Row="0" RowDefinitions="*" TabIndex="2">
             <StackPanel Grid.Row="0">
                 <TextBlock x:Name="ErrorMessage" Margin="8" />
             </StackPanel>
-            <TabView VerticalAlignment="Stretch" Grid.Row="0" x:Name="TabsArea" AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabClose">
+            <TabView x:FieldModifier="Public" VerticalAlignment="Stretch" Grid.Row="0" x:Name="TabsArea" AddTabButtonClick="TabView_AddTabButtonClick" TabCloseRequested="TabView_TabClose">
                 <TabView.TabStripFooter>
                     <Grid MinWidth="220" x:Name="WindowMove" />
                 </TabView.TabStripFooter>
             </TabView>
         </Grid>
-
-        <!--<Grid Grid.Row="1">
-            <Grid>
-                <TextBlock Grid.Column="0" Text="" x:Name="StatusBar" Margin="8, 0, 0, 0"
-                    FontSize="12" VerticalAlignment="Center" />
-            </Grid>
-        </Grid>-->
     </Grid>
 </Window>

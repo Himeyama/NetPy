@@ -110,15 +110,11 @@ namespace NetPy
                     Symbol = Symbol.Document
                 },
                 Header = "Untitled",
-                //Content = new Tabs
-                //{
-                //    mainWindow = this
-                //}
-                Content = new OpenFilePicker
-                {
-                    mainWindow = this
-                }
+                Content = new Frame()
             };
+            Tabs tabs = new();
+            ((Frame)item.Content).Navigate(typeof(Tabs), this);
+
             sender.TabItems.Add(item);
             sender.SelectedItem = item;
         }
@@ -132,5 +128,7 @@ namespace NetPy
                 process.Kill();
             }
         }
+
+
     }
 }

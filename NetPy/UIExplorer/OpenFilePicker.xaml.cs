@@ -3,10 +3,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.System;
 
 namespace NetPy
@@ -22,12 +24,36 @@ namespace NetPy
 
     public partial class OpenFilePicker : Page
     {
+        static string _saveTo;
+        static TaskCompletionSource<bool> _tcs = new();
+        public static string saveTo
+        {
+            get { return _saveTo; }
+            set
+            {
+                if (_saveTo != value)
+                    _saveTo = value;
+                _tcs.TrySetResult(true);
+            }
+        }
+
         string presentWorkingDir = @"C:\";
         public MainWindow mainWindow;
+        //public TabViewItem tabViewItem;
+        //public TabView tabView;
         Stack<string> backStack = new();
         Stack<string> forwardStack = new();
         IDictionary<string, IList<string>> FileTypeChoices = new Dictionary<string, IList<string>> { };
         IList<string> defaultFileType = new List<string> { };
+        public string selectedPath = string.Empty;
+        public string selectedContent = string.Empty;
+
+        public static async Task<string> AsyncOpenFilenamePicker(Frame frame, MainWindow mainWindow)
+        {
+            frame.Navigate(typeof(OpenFilePicker), mainWindow);
+            await WaitForChange();
+            return saveTo;
+        }
 
         public OpenFilePicker()
         {
@@ -59,6 +85,12 @@ namespace NetPy
             Refresh();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            mainWindow = e.Parameter as MainWindow;
+        }
+
         void FileTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
@@ -81,11 +113,70 @@ namespace NetPy
             }
         }
 
-        void FileItem_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        async void _FileItem_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             string fileName = ((FileInfo)((ListView)sender).SelectedValue).FileName;
             string dirPath = presentWorkingDir;
             string newDirPath = Path.Combine(dirPath, fileName).TrimEnd('\\') + "\\";
+
+            string fullPath = Path.Combine(dirPath, fileName);
+            if (File.Exists(fullPath))
+            {
+                // èàóù
+                ContentDialog dialog = new();
+
+                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+                dialog.XamlRoot = this.XamlRoot;
+                dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+                dialog.Title = "Confirm Save As";
+                dialog.PrimaryButtonText = "Yes";
+                dialog.SecondaryButtonText = "No";
+                dialog.DefaultButton = ContentDialogButton.Secondary;
+                dialog.Content = new StackPanel();
+                ((StackPanel)dialog.Content).Children.Add(new TextBlock
+                {
+                    Text = "Do you want to overwrite the file?"
+                });
+
+                ContentDialogResult result = await dialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    File.WriteAllText(fullPath, "SAVE");
+                }
+
+                return;
+            }
+
+            if (!Directory.Exists(newDirPath))
+                return;
+
+            backStack.Push(presentWorkingDir);
+            forwardStack.Clear();
+            ForwardButton.IsEnabled = false;
+            BackButton.IsEnabled = true;
+
+            AddressBar.Text = newDirPath;
+            presentWorkingDir = newDirPath;
+            ChangeParentDirectoryButton.IsEnabled = true;
+            Refresh();
+        }
+
+        async void FileItem_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            string fileName = ((FileInfo)((ListView)sender).SelectedValue).FileName;
+            string dirPath = presentWorkingDir;
+            string newDirPath = Path.Combine(dirPath, fileName).TrimEnd('\\') + "\\";
+
+            string fullPath = Path.Combine(dirPath, fileName);
+            if (File.Exists(fullPath))
+            {
+                selectedPath = fullPath;
+                selectedContent = File.ReadAllText(fullPath);
+                ((Frame)((TabViewItem)mainWindow.TabsArea.SelectedItem).Content).GoBack();
+                saveTo = fullPath;
+                return;
+            }
+
             if (!Directory.Exists(newDirPath))
                 return;
 
@@ -287,6 +378,12 @@ namespace NetPy
             string filePath = Path.Combine(presentWorkingDir, fileName);
             if (File.Exists(filePath))
                 FileName.Text = fileName;
+        }
+
+        public static async Task WaitForChange()
+        {
+            await _tcs.Task;
+            _tcs = new TaskCompletionSource<bool>();
         }
     }
 }
