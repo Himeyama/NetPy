@@ -36,7 +36,6 @@ namespace NetPy
             string fileName = await OpenFilePicker.AsyncOpenFilenamePicker(frame, mainWindow);
         }
 
-
         async Task<string> GetEditorValue()
         {
             string base64 = await Code.ExecuteScriptAsync("btoa(unescape(encodeURIComponent(editor.getValue())))");

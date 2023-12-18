@@ -39,14 +39,13 @@ namespace NetPy
 
         string presentWorkingDir = @"C:\";
         public MainWindow mainWindow;
-        //public TabViewItem tabViewItem;
-        //public TabView tabView;
         Stack<string> backStack = new();
         Stack<string> forwardStack = new();
         IDictionary<string, IList<string>> FileTypeChoices = new Dictionary<string, IList<string>> { };
         IList<string> defaultFileType = new List<string> { };
         public string selectedPath = string.Empty;
         public string selectedContent = string.Empty;
+        bool primaryFlag = true; // コンボボックス優先フラグ
 
         public static async Task<string> AsyncOpenFilenamePicker(Frame frame, MainWindow mainWindow)
         {
@@ -94,6 +93,7 @@ namespace NetPy
         void FileTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
+            primaryFlag = true;
             string selected = (string)comboBox.SelectedItem;
             foreach (string key in FileTypeChoices.Keys)
             {
@@ -112,62 +112,13 @@ namespace NetPy
                 }
             }
         }
-
-        async void _FileItem_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            string fileName = ((FileInfo)((ListView)sender).SelectedValue).FileName;
-            string dirPath = presentWorkingDir;
-            string newDirPath = Path.Combine(dirPath, fileName).TrimEnd('\\') + "\\";
-
-            string fullPath = Path.Combine(dirPath, fileName);
-            if (File.Exists(fullPath))
-            {
-                // 処理
-                ContentDialog dialog = new();
-
-                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
-                dialog.XamlRoot = this.XamlRoot;
-                dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-                dialog.Title = "Confirm Save As";
-                dialog.PrimaryButtonText = "Yes";
-                dialog.SecondaryButtonText = "No";
-                dialog.DefaultButton = ContentDialogButton.Secondary;
-                dialog.Content = new StackPanel();
-                ((StackPanel)dialog.Content).Children.Add(new TextBlock
-                {
-                    Text = "Do you want to overwrite the file?"
-                });
-
-                ContentDialogResult result = await dialog.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    File.WriteAllText(fullPath, "SAVE");
-                }
-
-                return;
-            }
-
-            if (!Directory.Exists(newDirPath))
-                return;
-
-            backStack.Push(presentWorkingDir);
-            forwardStack.Clear();
-            ForwardButton.IsEnabled = false;
-            BackButton.IsEnabled = true;
-
-            AddressBar.Text = newDirPath;
-            presentWorkingDir = newDirPath;
-            ChangeParentDirectoryButton.IsEnabled = true;
-            Refresh();
-        }
-
         async void FileItem_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             string fileName = ((FileInfo)((ListView)sender).SelectedValue).FileName;
             string dirPath = presentWorkingDir;
             string newDirPath = Path.Combine(dirPath, fileName).TrimEnd('\\') + "\\";
-
             string fullPath = Path.Combine(dirPath, fileName);
+
             if (File.Exists(fullPath))
             {
                 selectedPath = fullPath;
@@ -238,8 +189,20 @@ namespace NetPy
             }
             foreach (string file in files)
             {
-                if (!IsFileTypeIncluded(file))
-                    continue;
+                // *.ext にマッチ
+                string match = FileName.Text;
+                string[] matchFiles = Directory.GetFiles(dirPath, match);
+
+                if (matchFiles.Length > 0 && !primaryFlag)
+                {
+                    if (!IsFileTypeMatch(dirPath, match, file))
+                        continue;
+                }
+                else
+                {
+                    if (!IsFileTypeIncluded(file))
+                        continue;
+                }
 
                 FileAttributes attributes = File.GetAttributes(file);
                 if ((attributes & FileAttributes.System) != FileAttributes.System && (attributes & FileAttributes.Hidden) != FileAttributes.Hidden)
@@ -256,20 +219,34 @@ namespace NetPy
             }
         }
 
+        bool IsFileTypeMatch(string dirPath, string match, string fileName)
+        {
+            string[] files = Directory.GetFiles(dirPath, match);
+            if (files.Contains<string>(fileName))
+                return true;
+            return false;
+        }
+
         bool IsFileTypeIncluded(string fileName)
         {
             if (defaultFileType.Count == 1 && defaultFileType[0] == "*")
                 return true;
-
             string extension = Path.GetExtension(fileName);
             return defaultFileType.Contains(extension);
+        }
+
+        async void FileName_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                Open(OpenButton, null);
+            }
         }
 
         async void AddressBar_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
             {
-                // Enterキーが押されたときの処理をここに書く
                 string dirPath = AddressBar.Text;
                 if (!Directory.Exists(dirPath))
                 {
@@ -384,6 +361,39 @@ namespace NetPy
         {
             await _tcs.Task;
             _tcs = new TaskCompletionSource<bool>();
+        }
+
+        void Open(object sender, RoutedEventArgs e)
+        {
+            string fileName = FileName.Text;
+            string dirPath = presentWorkingDir;
+            string fullPath = Path.Combine(dirPath, fileName);
+            primaryFlag = false;
+
+            if (File.Exists(fullPath))
+            {
+                selectedPath = fullPath;
+                selectedContent = File.ReadAllText(fullPath);
+                ((Frame)((TabViewItem)mainWindow.TabsArea.SelectedItem).Content).GoBack();
+                saveTo = fullPath;
+            }
+            else if (fileName == "")
+            {
+                // 何もしない
+            }
+            else if (Directory.GetFiles(dirPath, fileName).Length > 0)
+            {
+                Refresh();
+            }
+            else
+            {
+                ErrorDialog($"{fileName}\nファイルが見つかりません。\nファイル名を確認して再実行してください。");
+            }
+        }
+
+        void Cancel(object sender, RoutedEventArgs e)
+        {
+            ((Frame)((TabViewItem)mainWindow.TabsArea.SelectedItem).Content).GoBack();
         }
     }
 }
